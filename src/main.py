@@ -43,6 +43,8 @@ tlist.sort(key=lambda x: -x[1])
 image = np.array(Image.open('test.jpg')) 
 #print(s)
 my_wordcloud = WordCloud(scale=4,mask=image,background_color='white', font_path = 'simkai.ttf').generate_from_frequencies(tdic)
+if os.path.exists('../output') == False:
+    os.mkdir(os.getcwd()[:-3]+'output')
 my_wordcloud.to_file('../output/词云.jpg')
 plt.clf()
 plt.bar([x[0] for x in tlist[:40]], [x[1] for x in tlist[:40]])
